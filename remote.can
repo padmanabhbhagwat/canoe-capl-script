@@ -1,0 +1,32 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message 0x2EE rmsg;
+}
+
+on key 'm'
+{
+  write("Sending Remote Frame");
+  //dir=1 indicates a Tx message.
+  rmsg.dir=1;
+  //rtr=1 indicates a remote frame to be transmitted onto the CAN BUS.
+  rmsg.rtr=1;
+  output(rmsg);
+}
+
+on message 0x2EE
+{
+  //this is like the pointer in C++ which is pointing to the address of the recieved message variable.
+  //.type is used to identify the type of the message.
+  //rxremote indicates that the received message is a remote frame.
+  if(this.type=rxremote)
+  {
+    //print onto the write window.
+    write("Remote frame is recieved");
+  }
+}
