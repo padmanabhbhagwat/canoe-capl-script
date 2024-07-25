@@ -1,5 +1,5 @@
 # canoe-capl-script
-Hi everyone I am including this file in my repository for anyone trying to test their CANoe/CANanlyzer configuration.
+Hi everyone, I am including this file in my repository for anyone trying to test their CANoe/CANanlyzer configuration.
 This repository is for anyone who wants to start with their CANoe analysis and their career in the automotive industry.
 CAPL (Communication Access Programming Language) is an event driven language which is mostly based on 'C'.
 Anybody with a beginner level experience in 'C' can perform CAPL Scripting.
