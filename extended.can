@@ -1,0 +1,48 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message 0x100 m1;
+//message 0x100x is the extended CAN format of the message 0x100.
+  message 0x100x m2;
+//msTimer is a timer variable in milliseconds.
+  msTimer timer1;
+}
+
+on start
+{
+  write("Entered Programming mode through CAPL");
+}
+
+on key 'a'
+{
+  m1.can=1;
+  m1.rtr=0;
+//A message is transmitting can be shown by either '1' or 'Tx'.
+  m1.dir=tx;
+  m1.dlc=4;
+  m1.byte(0)=0x02;
+  m1.byte(1)=0x22;
+  m1.byte(2)=0xF1;
+  m1.byte(3)=0x51;
+  output(m1);
+//Here we are setting the timer 'timer1' to start 1000 milliseconds on the press of key 'a'.
+  setTimer(timer1,1000);
+}
+//on timer is an even in which the snippet will execute after the timer defined expires. (Here after 1000 ms the snippet will execute.)
+on timer timer1
+{
+  m2.can=2;
+  m2.rtr=0;
+  m2.dir=tx;
+  m2.dlc=4;
+  m2.byte(0)=0x02;
+  m2.byte(1)=0x22;
+  m2.byte(2)=0xF1;
+  m2.byte(3)=0xA1;
+  output(m2);
+}
